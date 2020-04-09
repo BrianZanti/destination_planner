@@ -16,6 +16,17 @@ class DestinationsController < ApplicationController
     end
     @weather = JSON.parse(response.body, symbolize_names: true)
     @date = Time.now.strftime("%A %B %e")
+
+    conn = Faraday.new "https://api.giphy.com/v1/gifs" do |conn|
+      conn.params['api_key'] = ENV['GIPHY_API_KEY']
+    end
+
+    response = conn.get('search') do |req|
+      req.params['q'] = @weather[:weather].first[:description]
+    end
+
+    json = JSON.parse(response.body, symbolize_names: true)
+    @weather_image_url = json[:data].first[:images][:downsized_large][:url]
   end
 
   def new

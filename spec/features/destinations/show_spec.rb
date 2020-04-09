@@ -21,4 +21,12 @@ RSpec.describe "Destination Show Page" do
       expect(first('.summary').text).to_not be_empty
     end
   end
+
+  it "shows an image related to current weather" do
+    destination = Destination.create!(name: "Hawaii", zip: "11111", description: 'its great', image_url: 'https://placehold.it/300x300.png')
+
+    visit destination_path(destination)
+
+    expect(page).to have_css("img[src*='media2.giphy.com']")
+  end
 end

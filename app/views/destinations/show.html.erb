@@ -28,6 +28,8 @@
     </ul>
   </div>
 
+  <%= image_tag(@weather_image_url) %>
+
   <div class="row">
     <%= link_to 'Edit', edit_destination_path(@destination) %> |
     <%= link_to 'Back', destinations_path %>
