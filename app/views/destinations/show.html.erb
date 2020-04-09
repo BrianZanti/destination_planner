@@ -2,36 +2,36 @@
   <p id="notice"><%= notice %></p>
 
   <h3>
-    <%= @destination.name %>
+    <%= @destination_facade.name %>
   </h3>
 
   <p>
     <strong>Zip:</strong>
-    <%= @destination.zip %>
+    <%= @destination_facade.zip %>
   </p>
 
   <p>
     <strong>Description:</strong>
-    <%= @destination.description %>
+    <%= @destination_facade.description %>
   </p>
 
-  <%= image_tag(@destination.image_url) %>
+  <%= image_tag(@destination_facade.image_url) %>
 
   <div class="row">
-    <h4>Forecast for <%= @destination.name %>:</h4>
+    <h4>Forecast for <%= @destination_facade.name %>:</h4>
     <ul id='current-weather'>
-      <li class='date'><%= @date %></li>
-      <li class='current-temp'>Current Temp: <%= @weather[:main][:temp] %></li>
-      <li class='high-temp'>High: <%= @weather[:main][:temp_max] %></li>
-      <li class='low-temp'>Low: <%= @weather[:main][:temp_min] %></li>
-      <li class='summary'>Summary: <%= @weather[:weather].first[:description] %></li>
+      <li class='date'><%= @destination_facade.date %></li>
+      <li class='current-temp'>Current Temp: <%= @destination_facade.current_temperature %></li>
+      <li class='high-temp'>High: <%= @destination_facade.high_temperature %></li>
+      <li class='low-temp'>Low: <%= @destination_facade.low_temperature %></li>
+      <li class='summary'>Summary: <%= @destination_facade.summary %></li>
     </ul>
   </div>
 
-  <%= image_tag(@weather_image_url) %>
+  <%= image_tag(@destination_facade.weather_image_url) %>
 
   <div class="row">
-    <%= link_to 'Edit', edit_destination_path(@destination) %> |
+    <%= link_to 'Edit', edit_destination_path(@destination_facade.destination) %> |
     <%= link_to 'Back', destinations_path %>
   </div>
 </div>
