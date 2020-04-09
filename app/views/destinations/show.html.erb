@@ -19,7 +19,13 @@
 
   <div class="row">
     <h4>Forecast for <%= @destination.name %>:</h4>
-
+    <ul id='current-weather'>
+      <li class='date'><%= @date %></li>
+      <li class='current-temp'>Current Temp: <%= @weather[:main][:temp] %></li>
+      <li class='high-temp'>High: <%= @weather[:main][:temp_max] %></li>
+      <li class='low-temp'>Low: <%= @weather[:main][:temp_min] %></li>
+      <li class='summary'>Summary: <%= @weather[:weather].first[:description] %></li>
+    </ul>
   </div>
 
   <div class="row">

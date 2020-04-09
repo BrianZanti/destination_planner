@@ -6,6 +6,16 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    conn = Faraday.new "https://api.openweathermap.org/data/2.5" do |conn|
+      conn.params['appid'] = ENV['OPEN_WEATHER_MAP_KEY']
+    end
+
+    response = conn.get('weather') do |req|
+      req.params['q'] = @destination.name
+      req.params['units'] = 'imperial'
+    end
+    @weather = JSON.parse(response.body, symbolize_names: true)
+    @date = Time.now.strftime("%A %B %e")
   end
 
   def new
